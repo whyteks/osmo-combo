@@ -1,0 +1,3 @@
+#!/bin/sh
+exec 2>&1
+exec chrt 15 osmobts-trx -t 2 -c /etc/osmocom/osmo-bts.cfg
