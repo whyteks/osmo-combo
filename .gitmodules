@@ -21,7 +21,7 @@
 	url = git://git.osmocom.org/osmo-bts.git
 [submodule "osmo-trx"]
 	path = osmo-trx
-	url = git://git.osmocom.org/osmo-trx
+	url = git://git.osmocom.org/osmo-trx.git
 [submodule "osmo-pcu"]
 	path = osmo-pcu
 	url = git://git.osmocom.org/osmo-pcu.git

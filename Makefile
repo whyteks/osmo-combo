@@ -7,8 +7,10 @@ CONF_VARS=CFLAGS="-g -O0" LDFLAGS="-g -O0"
 
 
 .PHONY: pre  all clean_marks libosmocore libosmo-abis libosmo-netif libosmo-sccp libsmpp34 openbsc osmo-pcu openggsn osmo-gtp-kernel osmo-bts
+#osmo-trx
 
 all: libosmocore libosmo-abis libosmo-netif libosmo-sccp libsmpp34 openbsc osmo-pcu openggsn osmo-gtp-kernel osmo-bts
+#osmo-trx
 
 pre:
 	@mkdir -p $(BUILD_DIR)
@@ -224,4 +226,25 @@ $(BUILD_DIR)/osmo-bts.configured: osmo-bts/configure.ac
 	mkdir -p $(BUILD_DIR)/osmo-bts
 	cd $(BUILD_DIR)/osmo-bts && $(CONF_VARS) ../../osmo-bts/configure --prefix=$(PREFIX) --enable-trx
 	touch $(BUILD_DIR)/osmo-bts.configured
+
+
+
+###################################################################
+# osmo-trx
+
+osmo-trx: $(BUILD_DIR)/osmo-trx.installed
+
+$(BUILD_DIR)/osmo-trx.installed: $(BUILD_DIR)/osmo-trx.made
+	$(MAKE_INSTALL) -C $(BUILD_DIR)/osmo-trx
+	touch $(BUILD_DIR)/osmo-trx.installed
+
+$(BUILD_DIR)/osmo-trx.made: $(BUILD_DIR)/osmo-trx.configured
+	$(MAKE_SINGLE) -C $(BUILD_DIR)/osmo-trx
+	touch $(BUILD_DIR)/osmo-trx.made
+
+$(BUILD_DIR)/osmo-trx.configured: osmo-trx/configure.ac
+	( cd osmo-trx; autoreconf -fi )
+	mkdir -p $(BUILD_DIR)/osmo-trx
+	cd $(BUILD_DIR)/osmo-trx && $(CONF_VARS) ../../osmo-trx/configure --prefix=$(PREFIX) --with-sse
+	touch $(BUILD_DIR)/osmo-trx.configured
 
