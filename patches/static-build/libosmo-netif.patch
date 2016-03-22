@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 3d4c4f0..5eff32b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,7 +12,7 @@ dnl checks for programs
+ AC_PROG_MAKE_SET
+ AC_PROG_CC
+ AC_PROG_INSTALL
+-LT_INIT
++LT_INIT([disable-shared])
+ AC_PROG_LIBTOOL
+ 
+ AC_CONFIG_MACRO_DIR([m4])

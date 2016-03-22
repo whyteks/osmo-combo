@@ -1,0 +1,35 @@
+diff --git a/openbsc/Makefile.am b/openbsc/Makefile.am
+index 8696eb4..10f547d 100644
+--- a/openbsc/Makefile.am
++++ b/openbsc/Makefile.am
+@@ -1,7 +1,7 @@
+ AUTOMAKE_OPTIONS = foreign dist-bzip2 1.6
+ 
+ AM_CPPFLAGS = $(all_includes) -I$(top_srcdir)/include
+-SUBDIRS = doc include src tests
++SUBDIRS = doc include src
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = openbsc.pc
+diff --git a/openbsc/configure.ac b/openbsc/configure.ac
+index fc30b5e..3465f4d 100644
+--- a/openbsc/configure.ac
++++ b/openbsc/configure.ac
+@@ -14,6 +14,7 @@ AC_PROG_MAKE_SET
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++LT_INIT([disable-shared])
+ 
+ dnl checks for libraries
+ AC_SEARCH_LIBS([dlopen], [dl dld], [LIBRARY_DL="$LIBS";LIBS=""])
+diff --git a/openbsc/tests/db/db_test.c b/openbsc/tests/db/db_test.c
+index a02d1f8..ad230e0 100644
+--- a/openbsc/tests/db/db_test.c
++++ b/openbsc/tests/db/db_test.c
+@@ -256,4 +256,4 @@ int main()
+ }
+ 
+ /* stubs */
+-void vty_out() {}
++static void vty_out() {}
