@@ -145,7 +145,8 @@ $(BUILD_DIR)/osmo-pcu.configured: osmo-pcu/configure.ac
 ###################################################################
 # osmo-gtp-kernel
 
-osmo-gtp-kernel: libosmocore $(BUILD_DIR)/osmo-gtp-kernel.installed $(BUILD_DIR)/osmo-gtp-kernel.driver
+osmo-gtp-kernel: libosmocore $(BUILD_DIR)/osmo-gtp-kernel.installed
+#$(BUILD_DIR)/osmo-gtp-kernel.driver
 
 $(BUILD_DIR)/osmo-gtp-kernel.installed: $(BUILD_DIR)/osmo-gtp-kernel.made
 	$(MAKE_INSTALL) -C $(BUILD_DIR)/osmo-gtp-kernel
