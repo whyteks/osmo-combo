@@ -3,7 +3,7 @@ MAKE=make -j4
 MAKE_SINGLE=make
 MAKE_INSTALL=$(MAKE_SINGLE) install
 BUILD_DIR=build
-CONF_VARS=CFLAGS="-g -O0" LDFLAGS="-g -O0"
+CONF_VARS=CFLAGS="-g -O0 -I$(PREFIX)/include" CXXFLAGS="-g -O0 -I$(PREFIX)/include" LDFLAGS="-g -O0 -L$(PREFIX)/lib" PKG_CONFIG_LIBDIR="$(PREFIX)/lib/pkgconfig:${PKG_CONFIG_LIBDIR}"
 
 
 .PHONY: pre  all clean_marks libosmocore libosmo-abis libosmo-netif libosmo-sccp libsmpp34 openbsc osmo-pcu openggsn osmo-gtp-kernel osmo-bts
@@ -14,6 +14,7 @@ all: libosmocore libosmo-abis libosmo-netif libosmo-sccp libsmpp34 openbsc osmo-
 
 pre:
 	@mkdir -p $(BUILD_DIR)
+	@mkdir -p $(PREFIX)
 
 clean_marks:
 	rm *.installed
