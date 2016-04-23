@@ -1,6 +1,10 @@
 # osmo-combo
 
-A "make world" build system for OpenBSC and related packages with an option to build everything statically with no external Osmocom dependancies.
+A "make world" build system for OpenBSC and related executables in an easy and automated way. One of the goals was to build all binaries statically with no external Osmocom dependancies.
+
+The system **does not** pull dependencies for you - you will ahve to install them yourselves.
+
+The only change outside of the build directory is installation of libraries and binaries with `make install`. You also have an option to select arbitrary `PREFIX` and install everything to a selected directory instead of `/usr/local/` to eleminate system changes completely.
 
 Right now subprojects point to specific commits of all projects to make sure everything builds and runs properly. If you need another version - just update the git submodules.
 
