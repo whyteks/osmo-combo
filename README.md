@@ -21,6 +21,12 @@ Open `Makefile` and edit `PREFIX` variable to your taste.
 
 You may also want to edit `all` target to exclude/include certain projects from the build.
 
+If you want a static build, run the following command to apply a relevant patchset:
+
+```shell
+./apply_patches.sh static-build
+```
+
 ## Build
 
 This will build and install all the packages.
@@ -38,11 +44,11 @@ a "file per project" format.
 To apply a patchset:
 
 ```shell
-./apply_patches.sh static-build
+./apply_patches.sh <dir>
 ```
 
 To generate/update a patchset:
 
 ```shell
-./apply_patches.sh static-build
+./apply_patches.sh <dir>
 ```
