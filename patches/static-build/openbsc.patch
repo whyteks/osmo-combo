@@ -12,7 +12,7 @@ index 8696eb4..10f547d 100644
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = openbsc.pc
 diff --git a/openbsc/configure.ac b/openbsc/configure.ac
-index fc30b5e..3465f4d 100644
+index 24dbc30..b05def4 100644
 --- a/openbsc/configure.ac
 +++ b/openbsc/configure.ac
 @@ -14,6 +14,7 @@ AC_PROG_MAKE_SET
@@ -23,6 +23,18 @@ index fc30b5e..3465f4d 100644
  
  dnl checks for libraries
  AC_SEARCH_LIBS([dlopen], [dl dld], [LIBRARY_DL="$LIBS";LIBS=""])
+diff --git a/openbsc/src/osmo-nitb/Makefile.am b/openbsc/src/osmo-nitb/Makefile.am
+index d3b97f8..3b7cc8d 100644
+--- a/openbsc/src/osmo-nitb/Makefile.am
++++ b/openbsc/src/osmo-nitb/Makefile.am
+@@ -11,7 +11,6 @@ osmo_nitb_SOURCES = bsc_hack.c
+ osmo_nitb_LDADD = \
+ 		$(top_builddir)/src/libbsc/libbsc.a \
+ 		$(top_builddir)/src/libmsc/libmsc.a \
+-		$(top_builddir)/src/libbsc/libbsc.a \
+ 		$(top_builddir)/src/libtrau/libtrau.a \
+ 		$(top_builddir)/src/libcommon/libcommon.a \
+ 		-ldbi $(LIBCRYPT)				   \
 diff --git a/openbsc/tests/db/db_test.c b/openbsc/tests/db/db_test.c
 index a02d1f8..ad230e0 100644
 --- a/openbsc/tests/db/db_test.c
