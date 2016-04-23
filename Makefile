@@ -1,4 +1,9 @@
+# Use this PREFIX setting if you want to install system wide.
+# In this case you must run 'make' under 'sudo'.
 PREFIX=/usr/local
+# Use this PREFIX setting if you want to compile without
+# installing system wide. No need for 'sudo'.
+#PREFIX=$(CURDIR)/built
 MAKE=make -j4
 MAKE_SINGLE=make
 MAKE_INSTALL=$(MAKE_SINGLE) install
