@@ -35,6 +35,19 @@ This will build and install all the packages.
 make
 ```
 
+`Make` generates status/timestamp files in the `build` directory which have `<project>.<status>` format, e.g.:
+```
+libosmocore.configured
+libosmocore.installed
+libosmocore.made
+openbsc.configured
+openbsc.installed
+openbsc.made
+... etc
+```
+
+These files are then used by `make` to check which steps has been successfully finished. So if you want to re-run a certain step, you should remove the corresponding file. E.g. if you want to re-build openbsc without re-configuring it, just remove the `openbsc.made` file.
+
 ## Applying/generating patches
 
 Patches are stored in the `patches/xxx` subdirectories. Right now we provide patches to enable
