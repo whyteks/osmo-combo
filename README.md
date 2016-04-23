@@ -1,5 +1,8 @@
 # osmo-combo
 
+A "make world" build system for OpenBSC and related packages with an option to build everything statically with no external Osmocom dependancies.
+
+Right now subprojects point to specific commits of all projects to make sure everything builds and runs properly. If you need another version - just update the git submodules.
 
 ## Checkout code with all submodules
 
