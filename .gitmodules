@@ -9,13 +9,13 @@
 	url = git://git.osmocom.org/libosmo-sccp.git
 [submodule "libosmocore"]
 	path = libosmocore
-	url = https://github.com/fairwaves/libosmocore.git
+	url = git://git.osmocom.org/libosmocore.git
 [submodule "libsmpp34"]
 	path = libsmpp34
 	url = git://git.osmocom.org/libsmpp34.git
 [submodule "openbsc"]
 	path = openbsc
-	url = https://github.com/fairwaves/openbsc.git
+	url = git://git.osmocom.org/openbsc.git
 [submodule "osmo-bts"]
 	path = osmo-bts
 	url = git://git.osmocom.org/osmo-bts.git
