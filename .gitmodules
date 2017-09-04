@@ -31,3 +31,6 @@
 [submodule "osmo-gtp-kernel"]
 	path = osmo-gtp-kernel
 	url = git://git.osmocom.org/osmo-gtp-kernel.git
+[submodule "osmo-sip-connector"]
+	path = osmo-sip-connector
+	url = git://git.osmocom.org/osmo-sip-connector.git

@@ -1,9 +1,9 @@
 # Use this PREFIX setting if you want to install system wide.
 # In this case you must run 'make' under 'sudo'.
-PREFIX=/usr/local
+#PREFIX=/usr/local
 # Use this PREFIX setting if you want to compile without
 # installing system wide. No need for 'sudo'.
-#PREFIX=$(CURDIR)/built
+PREFIX=$(CURDIR)/built
 MAKE=make -j4
 MAKE_SINGLE=make
 MAKE_INSTALL=$(MAKE_SINGLE) install
@@ -18,7 +18,7 @@ CONF_PARAMS=--prefix=$(PREFIX) $(CONF_PARAMS_STATIC)
 .PHONY: pre  all clean_marks libosmocore libosmo-abis libosmo-netif libosmo-sccp libsmpp34 openbsc osmo-pcu openggsn osmo-gtp-kernel osmo-bts
 #osmo-trx
 
-all: libosmocore libosmo-abis libosmo-netif libosmo-sccp libsmpp34 openbsc osmo-pcu openggsn osmo-gtp-kernel osmo-bts
+all: libosmocore libosmo-abis libosmo-netif libosmo-sccp libsmpp34 openbsc osmo-pcu openggsn osmo-gtp-kernel osmo-bts osmo-sip-connector
 #osmo-trx
 
 pre:
@@ -217,6 +217,25 @@ $(BUILD_DIR)/openbsc.configured: openbsc/openbsc/configure.ac
 	cd $(BUILD_DIR)/openbsc && $(CONF_VARS) ../../openbsc/openbsc/configure --enable-smpp --enable-ussd-proxy $(CONF_PARAMS)
 	touch $(BUILD_DIR)/openbsc.configured
 
+
+###################################################################
+# osmo-sip-connector
+
+osmo-sip-connector: libosmocore libosmo-abis libosmo-netif $(BUILD_DIR)/osmo-sip-connector.installed
+
+$(BUILD_DIR)/osmo-sip-connector.installed: $(BUILD_DIR)/osmo-sip-connector.made
+	$(MAKE_INSTALL) -C $(BUILD_DIR)/osmo-sip-connector
+	touch $(BUILD_DIR)/osmo-sip-connector.installed
+
+$(BUILD_DIR)/osmo-sip-connector.made: $(BUILD_DIR)/osmo-sip-connector.configured
+	$(MAKE) -C $(BUILD_DIR)/osmo-sip-connector
+	touch $(BUILD_DIR)/osmo-sip-connector.made
+
+$(BUILD_DIR)/osmo-sip-connector.configured: osmo-sip-connector/configure.ac
+	( cd osmo-sip-connector; autoreconf -fi )
+	mkdir -p $(BUILD_DIR)/osmo-sip-connector
+	cd $(BUILD_DIR)/osmo-sip-connector && $(CONF_VARS) ../../osmo-sip-connector/configure $(CONF_PARAMS)
+	touch $(BUILD_DIR)/osmo-sip-connector.configured
 
 
 ###################################################################
